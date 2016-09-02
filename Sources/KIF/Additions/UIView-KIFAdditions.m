@@ -418,7 +418,12 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
         NSArray * matchingSubviews = [view subviewsWithClassNameOrSuperClassNamePrefix:prefix];
         [result addObjectsFromArray:matchingSubviews];
     }
-
+    
+    if( [NSStringFromClass([self class]) hasPrefix:prefix] )
+    {
+        [result addObject:self];
+    }
+    
     return result;
 }
 
